@@ -1,0 +1,2 @@
+core.IProductCatagoryService
+core.ServiceProductCatagory

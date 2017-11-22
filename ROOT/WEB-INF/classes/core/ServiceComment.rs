@@ -1,0 +1,2 @@
+core.ServiceComment
+core.ICommentService

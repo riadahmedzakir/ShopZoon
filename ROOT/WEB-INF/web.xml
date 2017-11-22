@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<web-app 
+version="3.1"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+					http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd 
+					http://java.sun.com/xml/ns/javaee 
+					http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+metadata-complete="true">
+
+	<display-name>Shop Zoon</display-name>
+	<description>ATP1 Project</description>
+	 
+	/**----------------------------------------------------------JStl Config-----------------------------------------------------------**/
+	<servlet>
+        <servlet-name>action</servlet-name>
+        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/struts-config.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>2</param-value>
+        </init-param>
+        <init-param>
+            <param-name>detail</param-name>
+            <param-value>2</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+        </servlet>
+    <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+
+	<jsp-config>
+	    <jsp-property-group>
+	      <url-pattern>*.jsp</url-pattern>
+	      <include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
+	    </jsp-property-group>
+	    <taglib>
+            <taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri>
+            <taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+        </taglib>
+        <taglib>
+            <taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
+            <taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+        </taglib>
+        <taglib>
+            <taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri>
+            <taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+        </taglib>
+        <taglib>
+            <taglib-uri>/WEB-INF/struts-nested.tld</taglib-uri>
+            <taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+        </taglib>
+        <taglib>
+            <taglib-uri>/WEB-INF/struts-tiles.tld</taglib-uri>
+            <taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+        </taglib>
+	</jsp-config> 
+	/**----------------------------------------------------------Server Faces-----------------------------------------------------------**/
+	<context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>  
+        <param-value>Development</param-value>  
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.CONFIG_FILES</param-name>
+        <param-value>/WEB-INF/faces-config.xml</param-value>
+    </context-param>
+ 
+	<servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+         <url-pattern>*.face</url-pattern>
+    </servlet-mapping>
+	
+	<session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+	/**---------------------------------------------------------Servlet Other--------------------------------------------------------------**/
+	<servlet>
+		<servlet-name>servletLog</servlet-name>
+		<servlet-class>controller.Login</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletLog</servlet-name>
+		<url-pattern>/servlet/log</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>servletReg</servlet-name>
+		<servlet-class>controller.Reg</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletReg</servlet-name>
+		<url-pattern>/servlet/reg</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>servletEmailUse</servlet-name>
+		<servlet-class>controller.EmailUse</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletEmailUse</servlet-name>
+		<url-pattern>/servlet/emailuse</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>servletForgotPassword</servlet-name>
+		<servlet-class>controller.ForgotPassword</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletForgotPassword</servlet-name>
+		<url-pattern>/servlet/ForgotPassword</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>servletProfileImage</servlet-name>
+		<servlet-class>core.ServiceProfileImage</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletProfileImage</servlet-name>
+		<url-pattern>/servlet/ProfileImage</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>servletUnlock</servlet-name>
+		<servlet-class>controller.Unlock</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletUnlock</servlet-name>
+		<url-pattern>/unlock</url-pattern>
+	</servlet-mapping>
+	
+	/**--------------------------------------------------------------------Servlet Comment-----------------------------------------------------------**/
+	<servlet>
+		<servlet-name>servletCommentView</servlet-name>
+		<servlet-class>controller.CommentViewAddDel</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletCommentView</servlet-name>
+		<url-pattern>/servlet/CommentViewAddDel</url-pattern>
+	</servlet-mapping>
+	
+	
+	/**----------------------------------------------------------------Servlet Customer-------------------------------------------------------------**/
+	 
+	
+	/**----------------------------------------------------------Servlet Product----------------------------------------------------------------**/
+	
+	<servlet>
+		<servlet-name>servletSaveProduct</servlet-name>
+		<servlet-class>controller.UploadProduct</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletSaveProduct</servlet-name>
+		<url-pattern>/servlet/productSave</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>servletUploadImage</servlet-name>
+		<servlet-class>core.ServiceUploadImage</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletUploadImage</servlet-name>
+		<url-pattern>/servlet/UploadImage</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>servletUpldateImage</servlet-name>
+		<servlet-class>core.ServiceUpdateImage</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletUpldateImage</servlet-name>
+		<url-pattern>/servlet/UpdateImage</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>servletOrder</servlet-name>
+		<servlet-class>controller.OrderAddDelRead</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletOrder</servlet-name>
+		<url-pattern>/servlet/order</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>servletSearch</servlet-name>
+		<servlet-class>controller.SearchProduct</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletSearch</servlet-name>
+		<url-pattern>/servlet/search</url-pattern>
+	</servlet-mapping>
+
+
+		
+	/**----------------------------------------------------------------------Servlet Admin--------------------------------------------------------------**/ 
+	<servlet>
+		<servlet-name>servletAdminAddCatagory</servlet-name>
+		<servlet-class>controller.ProductCatagoryAddDel</servlet-class>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>servletAdminAddCatagory</servlet-name>
+		<url-pattern>/servlet/AdminAddCatagory</url-pattern>	
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>servletAdminActive_Employee</servlet-name>
+		<servlet-class>controller.admin.Admin</servlet-class>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>servletAdminActive_Employee</servlet-name>
+		<url-pattern>/servlet/AdminEmployee</url-pattern>	
+	</servlet-mapping>
+ 	
+ 	/**----------------------------------------------------------------------Servlet Staff--------------------------------------------------------------**/
+	
+	<servlet>
+		<servlet-name>servletStaffPanel</servlet-name>
+		<servlet-class>controller.staff.Staff</servlet-class>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>servletStaffPanel</servlet-name>
+		<url-pattern>/servlet/Staff</url-pattern>	
+	</servlet-mapping>
+
+	/**----------------------------------------------------------------------JSP Other------------------------------------------------------------------**/
+	<servlet>
+		<servlet-name>jspReg</servlet-name>
+		<jsp-file>/reg.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspReg</servlet-name>
+		<url-pattern>/reg</url-pattern>   
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>jspLog</servlet-name>
+		<jsp-file>/log.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspLog</servlet-name>
+		<url-pattern>/log</url-pattern>   
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>jspForgotpassword</servlet-name>
+		<jsp-file>/forgot.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspForgotpassword</servlet-name>
+		<url-pattern>/forgotpassword</url-pattern>   
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>jspProfile</servlet-name>
+		<jsp-file>/profile.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspProfile</servlet-name>
+		<url-pattern>/u/*</url-pattern>   
+	</servlet-mapping>	
+	 
+
+	<servlet>
+		<servlet-name>jspNotFound</servlet-name>
+		<jsp-file>/404.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspNotFound</servlet-name>
+		<url-pattern>/NotFound</url-pattern>   
+	</servlet-mapping>	
+	
+	/**----------------------------------------------------------------------JSP Product------------------------------------------------------------------**/
+	<servlet>
+		<servlet-name>jspUploadProduct</servlet-name>
+		<jsp-file>/XProduct/productUpload.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspUploadProduct</servlet-name>
+		<url-pattern>/ProductUpload</url-pattern>   
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>jspEditProduct</servlet-name>
+		<jsp-file>/XProduct/productEdit.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspEditProduct</servlet-name>
+		<url-pattern>/EditProduct/*</url-pattern>   
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>jspProduct</servlet-name>
+		<jsp-file>/XProduct/product.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspProduct</servlet-name>
+		<url-pattern>/product/product.jsp</url-pattern>
+		<url-pattern>/product/*</url-pattern>		
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>jspProductDetail</servlet-name>
+		<jsp-file>/XProduct/productdetail.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspProductDetail</servlet-name>
+		<url-pattern>/product/productdetail.jsp</url-pattern>
+		<url-pattern>/productdetail/*</url-pattern>		
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>jspProductBuyNow</servlet-name>
+		<jsp-file>/XProduct/buynow.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspProductBuyNow</servlet-name>
+		<url-pattern>/product/buynow.jsp</url-pattern>
+		<url-pattern>/buynow/*</url-pattern>		
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>jspProductBuyNowPayment</servlet-name>
+		<jsp-file>/XProduct/buynowPayment.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspProductBuyNowPayment</servlet-name>
+		<url-pattern>/product/buynowPayment.jsp</url-pattern>
+		<url-pattern>/buynowPayment/*</url-pattern>		
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>jspProductCart</servlet-name>
+		<jsp-file>/XProduct/cart.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspProductCart</servlet-name>
+		<url-pattern>/product/cart.jsp</url-pattern>
+		<url-pattern>/cart</url-pattern>		
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>jspProductCartpanding</servlet-name>
+		<jsp-file>/XProduct/cartpanding.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspProductCartpanding</servlet-name>
+		<url-pattern>/product/cartpanding.jsp</url-pattern>
+		<url-pattern>/cartpanding</url-pattern>		
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>jspProductSearch</servlet-name>
+		<jsp-file>/XProduct/search.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspProductSearch</servlet-name>
+		<url-pattern>/product/search.jsp</url-pattern>
+		<url-pattern>/search</url-pattern>		
+	</servlet-mapping>
+
+	/**----------------------------------------------------------------------JSP Admin------------------------------------------------------------------**/
+	
+	<servlet>
+		<servlet-name>jspAdminActiveAccount</servlet-name>
+		<jsp-file>/XAdmin/ActiveAccount.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspAdminActiveAccount</servlet-name>
+		<url-pattern>/Admin/ActiveAcc</url-pattern>	
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>jspAdminAddCatagory</servlet-name>
+		<jsp-file>/XAdmin/AddCatagory.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspAdminAddCatagory</servlet-name>
+		<url-pattern>/Admin/AddCatagory</url-pattern>	
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>jspAdminEmployee</servlet-name>
+		<jsp-file>/XAdmin/Employee.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspAdminEmployee</servlet-name>
+		<url-pattern>/Admin/Employee</url-pattern>	
+	</servlet-mapping>
+	 
+	/**----------------------------------------------------------------------JSP Staff------------------------------------------------------------------**/
+	<servlet>
+		<servlet-name>jspStaffNewOrder</servlet-name>
+		<jsp-file>/XStaff/newOrder.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspStaffNewOrder</servlet-name>
+		<url-pattern>/Staff/NewOrder</url-pattern>	
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>jspStaffAllOrder</servlet-name>
+		<jsp-file>/XStaff/allOrder.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspStaffAllOrder</servlet-name>
+		<url-pattern>/Staff/AllOrder</url-pattern>	
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>jspStaffArea</servlet-name>
+		<jsp-file>/XStaff/area.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspStaffArea</servlet-name>
+		<url-pattern>/Staff/Area</url-pattern>	
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>jspStaffCancelOrder</servlet-name>
+		<jsp-file>/XStaff/cancelOrder.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspStaffCancelOrder</servlet-name>
+		<url-pattern>/Staff/CancelOrder</url-pattern>	
+	</servlet-mapping>
+
+	/**----------------------------------------------------------------------JSP Deliver------------------------------------------------------------------**/
+	<servlet>
+		<servlet-name>jspDeliverNewOrder</servlet-name>
+		<jsp-file>/XDeliver/newOrder.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspDeliverNewOrder</servlet-name>
+		<url-pattern>/Deliver/NewOrder</url-pattern>	
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>jspDeliverAllOrder</servlet-name>
+		<jsp-file>/XDeliver/allOrder.jsp</jsp-file>
+	</servlet> 
+	<servlet-mapping>
+		<servlet-name>jspDeliverAllOrder</servlet-name>
+		<url-pattern>/Deliver/AllOrder</url-pattern>	
+	</servlet-mapping>
+</web-app>
